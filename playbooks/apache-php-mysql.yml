@@ -3,12 +3,14 @@
   become: yes
   become_user: root
   tasks:
+  - name: Chenking ping
+    ping:
   - name: Install apache2
     apt:
       name: apache2
       update_cache: true
       state: latest
-  - name: Copy index.html to /var/www/html 
+  - name: Copy index.html to /var/www/html
     copy:
       src: /home/vladimir/Documents/ansible/playbooks/index.html
       dest: /var/www/html
@@ -20,5 +22,15 @@
       name: apache2
       enabled: yes
       state: restarted
-
-
+  - name: install php module
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - php
+      - php-mysql
+  - name: Install MySQL DB server
+    apt:
+      name: mysql-server
+      state: latest
+ 
