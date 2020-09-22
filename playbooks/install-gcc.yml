@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+  - name: Install gcc
+    apt:
+      name: gcc
+      state: present
