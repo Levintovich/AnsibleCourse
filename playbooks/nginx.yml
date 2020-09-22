@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  become: yes
+  become_user: root
+  tasks:
+  - name: Chenking ping
+    ping:  
+  - name: Install nginx
+    package:
+      name: nginx
+      state: present
+    notify:
+      Start nginx
+  handlers:
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
