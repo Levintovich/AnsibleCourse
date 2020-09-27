@@ -1,6 +1,6 @@
 ---
 - hosts: webservers
-  become: yes
+  become: enable
   become_user: root
   become_method: sudo
   tasks:
