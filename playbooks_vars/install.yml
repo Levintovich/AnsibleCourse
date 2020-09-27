@@ -8,7 +8,7 @@
   tasks:
   - name: Ping Servers
     ping:
-  - name: Debug: print variables
+  - name: Debug - print variables
     debug: 
       msg: "{{ packages }}" 
     ping:
