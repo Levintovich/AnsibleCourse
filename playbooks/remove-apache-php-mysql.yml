@@ -1,0 +1,23 @@
+---
+- hosts: webservers
+  become: yes
+  become_user: root
+  tasks:
+  - name: Chenking ping
+    ping:
+  - name: Uninstall apache2
+    apt:
+      name: apache2
+      update_cache: true
+      state: absent
+  - name: Remove php modules
+    apt:
+      name: "{{ item }}"
+      state: absent
+    with_items:
+      - php
+      - php-mysql
+  - name: Uninstall MySQL DB server
+    apt:
+      name: mysql-server
+      state: absent
