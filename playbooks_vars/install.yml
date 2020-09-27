@@ -1,10 +1,14 @@
 ---
-- hosts: webservers 
-  become: yes
+- hosts: webservers
+  become: enable
+  become_method: sudo
   become_user: root
   vars:
     packages: [ 'vim', 'git', 'curl' ]
   tasks:
   - name: Install Package
+    debug: 
+      msg: "{{ item }}"
     apt: name={{ item }} state=latest
-    with_items: packages
+    with_items: 
+      - "{{ packages  }}"
