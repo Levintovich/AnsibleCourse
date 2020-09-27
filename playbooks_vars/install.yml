@@ -10,7 +10,7 @@
     ping:
   - name: Debug - print variables
     debug: 
-      msg: "{{ packages }}" 
+      var: packages
     ping:
   - name: Install Package    
     apt: name={{ item }} state=latest
