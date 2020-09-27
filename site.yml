@@ -3,5 +3,5 @@
   become: enable
   become_method: sudo
   become_user: root
-roles:
-  - apache
+  roles:
+    - apache
