@@ -1,0 +1,10 @@
+---
+# installing php
+- name: installing php
+  apt:
+    name: php
+    state: present
+- name: installing php-mysql
+  apt:
+    name: php-mysql
+    state: present
