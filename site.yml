@@ -6,4 +6,4 @@
   roles:
     - apache
     - php
-    - mysql-server
+    - mysql
