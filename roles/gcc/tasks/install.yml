@@ -1,0 +1,7 @@
+---
+# installing gcc
+- name: Install GCC
+  apt:
+    name: gcc
+    state: latest
+
