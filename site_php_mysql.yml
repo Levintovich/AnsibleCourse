@@ -1,0 +1,8 @@
+---
+- hosts: webservers
+  become: enable
+  become_method: sudo
+  become_user: root
+  roles:
+    - php
+    - mysql
