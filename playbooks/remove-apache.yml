@@ -4,7 +4,7 @@
   become_method: sudo
   become_user: root
   tasks:
-  - name: Remove gcc
+  - name: Remove apache
     apt:
       name: apache2
       state: absent
