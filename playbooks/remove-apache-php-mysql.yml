@@ -6,19 +6,36 @@
   tasks:
   - name: Chenking ping
     ping:
+  - name: Stopping Apache service
+    service:
+      name:  apache2
+      enabled: no
+      state: stopped
   - name: Uninstall apache2
     apt:
       name: apache2
-      update_cache: true
+      update_cache: yes
       state: absent
+      purge: yes
+      autoremove: yes
   - name: Remove php modules
     apt:
       name: "{{ item }}"
+      update_cache: yes
       state: absent
+      purge: yes
+      autoremove: yes
     with_items:
       - php
       - php-mysql
+  - name: Stopping Mysql DB server
+    service:
+      name:  mysql
+      enabled: no
+      state: stopped
   - name: Uninstall MySQL DB server
     apt:
       name: mysql-server
       state: absent
+      purge: yes
+      autoremove: yes
