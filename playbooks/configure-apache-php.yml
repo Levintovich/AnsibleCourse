@@ -12,7 +12,7 @@
       state: latest
   - name: Copy index.html to /var/www/html 
     copy:
-      src: /home/vladimir/Documents/ansible/playbooks/index.html
+      src: /home/vladimir/Documents/ansible/AnsibleCourse/playbooks
       dest: /var/www/html
       owner: vladimir
       group: vladimir
