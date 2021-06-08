@@ -18,6 +18,10 @@
       state: absent
       purge: yes
       autoremove: yes
+  - name: Removing folder /var/www/*
+    file:
+      path: /var/www
+      state: absent
   - name: Remove php modules
     apt:
       name: "{{ item }}"
