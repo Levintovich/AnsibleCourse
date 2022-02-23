@@ -11,9 +11,9 @@
       name: apache2
       update_cache: true
       state: latest
-  - name: Copy index.html to /var/www/html 
+  - name: Copy index.html to /var/www/html
     copy:
-      src: /home/vladimir/Documents/ansible/AnsibleCourse/playbooks
+      src: /home/vladimir/ansible/AnsibleCourse/playbooks/index.html
       dest: /var/www/html
       owner: vladimir
       group: vladimir
@@ -23,14 +23,18 @@
       name: apache2
       enabled: yes
       state: restarted
+  - name: "Update Repository cache"
+    apt:
+      update_cache: true
+      upgrade: dist
+      cache_valid_time: 3600
+      force_apt_get: true
   - name: install php module
     apt:
       name: "{{ item }}"
       state: present
     with_items:
      - php
-     - libapache2-mod-php5
-     - php-mcrypt
+     - libapache2-mod-php
+       # - php-mcrypt
      - php-mysql
-
-
