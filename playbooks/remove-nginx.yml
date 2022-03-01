@@ -1,0 +1,22 @@
+---
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: Stop Nginx Services
+    service:
+      name:  nginx
+      enabled: no
+      state: stopped
+  - name: Uninstall NginX
+    apt:
+      name: nginx
+      update_cache: yes
+      state: absent
+      purge: yes
+      autoremove: yes
+  - name: Removing folder /var/www/*
+    file:
+      path: /var/www
+      state: absent
