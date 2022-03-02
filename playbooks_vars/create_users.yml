@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: Create new users
+    user:
+      name: '{{ item }}'
+      state: present
+    with_items:
+      - john
+      - mike
+      - andrew
